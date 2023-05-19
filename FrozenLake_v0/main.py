@@ -129,34 +129,12 @@ for l in range(len(learning_rate)):
     tmp = [i/test_epochs*100 for i in success_evaluation]
     eval_penalized_percentage = np.vstack([eval_penalized_percentage, tmp])
 
-print(eval_percentage, eval_penalized_percentage)
-# eval_percentage_df = pd.DataFrame(eval_percentage,
-#                                   columns=["Trial " + str(i) for i in range(10)],
-#                                   index=["Learning rate" + str(learning_rate[i]) for i in range(len(learning_rate))])
-# eval_penalized_percentage_df = pd.DataFrame(eval_penalized_percentage,
-#                                             columns=["Trial " + str(i) for i in range(10)],
-#                                             index=["Learning rate" + str(learning_rate[i]) for i in range(len(learning_rate))])
-
 eval_percentage_df = pd.DataFrame(eval_percentage)
 eval_penalized_percentage_df = pd.DataFrame(eval_penalized_percentage)
 
 eval_percentage_df.to_csv("./evaluation_data.csv")
 eval_penalized_percentage_df.to_csv("./evaluation_penalized_data.csv")
 
-
-
-# print('Q-table after training:')
-# print(qtable)
-#
-# plt.plot(outcomes)
-# plt.title("Goal reached in every epoch")
-# plt.xlabel("Run number")
-# plt.ylabel("Outcome")
-# plt.show()
-
-
-# print(f"In last iteration there were {test_outcomes.count(1)} successes. Success rate: {test_outcomes.count(1) / test_epochs * 100}%")
-# eval_percentage = [i/test_epochs*100 for i in success_evaluation]
 plt.plot(eval_percentage)
 plt.title("Percent of correct paths in each evaluation")
 plt.xlabel("Evaluation number")
